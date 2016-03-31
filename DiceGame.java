@@ -43,7 +43,7 @@ public class DiceGame {
         }
         
     // Calculate the player's statistics
-        winPercent = ((wins/roundsPlayed)*100);
+        winPercent = ((wins*100)/roundsPlayed);
     // Display statistics and ask if the user if they want to play again
         String playerStats = String.format("You have played %d games."
                 + "\nYou've won %f percent of your games.", roundsPlayed, winPercent);
