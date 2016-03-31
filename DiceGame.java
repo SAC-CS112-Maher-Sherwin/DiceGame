@@ -9,7 +9,9 @@ public class DiceGame {
         int roundsPlayed = 0;
         int wins = 0;
         double winPercent;
+        int evenCount = 0;
         double evenPercent;
+        int oddCount = 0;
         double oddPercent;
         
     while (play.equalsIgnoreCase("yes")){
@@ -26,6 +28,11 @@ public class DiceGame {
     // Prompt user to guess if it will be odd or even and store value
         String userGuess = JOptionPane.showInputDialog("You're about to roll a 6-sided dice. "
                 + "\nDo you think it will be odd or even?");
+            
+            if (userGuess.equals("odd"))
+                oddCount++;
+            else
+                evenCount++;
        
     // Compare the user's guess and the actual dice roll and print result
         if ((userGuess.equals("odd") && actualRoll.equals("odd")) 
@@ -44,9 +51,15 @@ public class DiceGame {
         
     // Calculate the player's statistics
         winPercent = ((wins*100)/roundsPlayed);
+        oddPercent = ((oddCount*100)/roundsPlayed);
+        evenPercent = ((evenCount*100)/roundsPlayed);
+        
     // Display statistics and ask if the user if they want to play again
         String playerStats = String.format("You have played %d games."
-                + "\nYou've won %f percent of your games.", roundsPlayed, winPercent);
+                + "\nYou've won %.2f percent of your games."
+                + "\n\nYou've guessed Odd %.2f percent of the time."
+                + "\nYou've guessed Even %.2f percent of the time.", 
+                roundsPlayed, winPercent, oddPercent, evenPercent);
         JOptionPane.showMessageDialog(null, playerStats);
   
         play = JOptionPane.showInputDialog("Would you like to play again? (Yes/No)");
